@@ -11,15 +11,16 @@ android {
     }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
-//    defaultConfig {
-//        applicationId "com.yep.uiautomator2"
-//        minSdkVersion 19
-//        targetSdkVersion 23
-//        versionCode 2
-//        versionName "1.1"
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//
-//    }
+    defaultConfig {
+        applicationId "com.yep.uiautomator2"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 2
+        versionName "1.1"
+        archivesBaseName = "yep-uiautomator"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -30,17 +31,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
+
     productFlavors {
         server {
-            minSdkVersion 19
             applicationId 'com.yep.uiautomator2'
-            targetSdkVersion 23
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            minSdkVersion 19
             testApplicationId 'com.yep.uiautomator2.test'
-            versionCode 2
-            versionName '1.1'
-            signingConfig signingConfigs.test
+//            signingConfig signingConfigs.test
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/maven/com.google.guava/guava/pom.properties'
+        exclude 'META-INF/maven/com.google.guava/guava/pom.xml'
     }
 }
 
@@ -49,7 +55,7 @@ dependencies {
     compile 'com.android.support.test:runner:0.5'
     compile 'com.android.support:support-annotations:25.2.0'
     compile 'com.android.support.test.uiautomator:uiautomator-v18:2.1+'
-    compile 'org.nanohttpd:nanohttpd:2.3.1'
+    compile 'org.nanohttpd:nanohttpd:2.3.0'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

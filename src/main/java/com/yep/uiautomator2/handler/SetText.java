@@ -42,6 +42,7 @@ public class SetText extends BaseCommandHandler {
                     return getErrorResult("Unable to find a focused element." + e.toString());
                 }
             }
+//            element.click();
             final Hashtable<String, Object> params = command.params();
             boolean replace = Boolean.parseBoolean(params.get("replace").toString());
             String text = params.get("text").toString();

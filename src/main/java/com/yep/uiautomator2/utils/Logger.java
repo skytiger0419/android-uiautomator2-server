@@ -40,7 +40,7 @@ public class Logger {
      * Logger debug
      */
     public static void debug(Object... messages) {
-        android.util.Log.d(TAG, getString(messages));
+        android.util.Log.i(TAG, getString(messages));
     }
 
     /**

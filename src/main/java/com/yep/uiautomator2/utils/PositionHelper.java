@@ -4,6 +4,8 @@ import android.graphics.Rect;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import com.yep.uiautomator2.common.exceptions.InvalidCoordinatesException;
+import com.yep.uiautomator2.core.UiAutomatorBridge;
+
 import static com.yep.uiautomator2.utils.Device.getInstance;
 
 public abstract class PositionHelper {
@@ -62,10 +64,12 @@ public abstract class PositionHelper {
 
     public static Point getDeviceAbsPos(final Point point)
             throws UiObjectNotFoundException, InvalidCoordinatesException {
-        final UiDevice d = getInstance().getUiDevice();
-        final Rect displayRect = new Rect(0, 0, d.getDisplayWidth(), d.getDisplayHeight());
+//        final UiDevice d = getInstance().getUiDevice();
+//        final Rect displayRect = new Rect(0, 0, d.getDisplayWidth(), d.getDisplayHeight());
+        android.graphics.Point p = new android.graphics.Point();
+        UiAutomatorBridge.getInstance().getDefaultDisplay().getRealSize(p);
+        final Rect displayRect = new Rect(0, 0, p.x, p.y);
         Logger.debug("Display bounds: " + displayRect.toShortString());
-
         return getAbsolutePosition(point, displayRect, new Point(), true);
     }
 

@@ -81,6 +81,8 @@ public class AndroidCommandExecutor {
         map.put("sim_info", new Sim());
         map.put("uiWatcher", new UiWatcherHandler());
         map.put("clearUiCache", new ClearUiCache());
+        map.put("timezone", new TimeZoneHandler());
+        map.put("jumpApp", new JumpAppDetail());
     }
 
     /**

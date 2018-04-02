@@ -1,23 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        test {
-            keyAlias 'uiautomator'
-            keyPassword '123456'
-            storeFile file('E:/android_keys/yeptelecom.jks')
-            storePassword '123456'
-        }
-    }
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
     defaultConfig {
-        applicationId "com.yep.uiautomator2"
+        applicationId "com.smartisan.uiautomator2"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 5
-        versionName "1.4"
-        archivesBaseName = "yep-uiautomator"
+        versionCode 6
+        versionName "1.5"
+        archivesBaseName = "smartisan-uiautomator"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -34,13 +26,18 @@ android {
     lintOptions {
         abortOnError false
     }
-
+    flavorDimensions "default"
     productFlavors {
+//        server {
+//            applicationId 'com.smartisan.uiautomator2'
+//            minSdkVersion 19
+//            testApplicationId 'com.smartisan.uiautomator2.test'
+//        }
         server {
-            applicationId 'com.yep.uiautomator2'
-            minSdkVersion 19
-            testApplicationId 'com.yep.uiautomator2.test'
-            signingConfig signingConfigs.test
+            applicationId 'com.smartisan.uiautomator2'
+        }
+        u2test{
+            applicationId 'com.smartisan.uiautomator2.test'
         }
     }
 

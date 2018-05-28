@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 24
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.smartisan.uiautomator2"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 24
         versionCode 6
         versionName "1.5"
         archivesBaseName = "smartisan-uiautomator"
@@ -28,11 +28,6 @@ android {
     }
     flavorDimensions "default"
     productFlavors {
-//        server {
-//            applicationId 'com.smartisan.uiautomator2'
-//            minSdkVersion 19
-//            testApplicationId 'com.smartisan.uiautomator2.test'
-//        }
         server {
             applicationId 'com.smartisan.uiautomator2'
         }
@@ -51,12 +46,13 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support.test:runner:0.5'
     compile 'com.jayway.jsonpath:json-path:0.8.1'
-    compile 'com.android.support:support-annotations:25.3.1'
+    compile 'com.android.support:support-annotations:23.1.1'
+    compile 'com.android.support:support-v4:24.0.0'
     compile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
     compile 'org.nanohttpd:nanohttpd:2.3.0'
     androidTestCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support:support-annotations:25.3.1'
+    androidTestCompile 'com.android.support:support-annotations:23.1.1'
     androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2.2'
-    compile 'com.android.support:support-compat:25.3.0'
+
 }

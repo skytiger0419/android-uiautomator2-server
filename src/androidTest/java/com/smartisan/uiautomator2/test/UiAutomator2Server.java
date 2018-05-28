@@ -7,7 +7,6 @@ import android.support.test.runner.AndroidJUnit4;
 import android.support.test.filters.SdkSuppress;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import com.smartisan.uiautomator2.common.exceptions.SessionRemovedException;
 import com.smartisan.uiautomator2.server.ServerInstrumentation;
 import com.smartisan.uiautomator2.utils.Logger;

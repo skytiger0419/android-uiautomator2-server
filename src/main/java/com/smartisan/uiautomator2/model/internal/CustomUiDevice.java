@@ -23,7 +23,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.smartisan.uiautomator2.utils.ReflectionUtils.invoke;
 import static com.smartisan.uiautomator2.utils.ReflectionUtils.method;
 import static com.smartisan.uiautomator2.utils.ReflectionUtils.getField;
@@ -33,7 +32,6 @@ public class CustomUiDevice {
     private static final String FIELD_M_INSTRUMENTATION = "mInstrumentation";
     private static final String FIELD_API_LEVEL_ACTUAL = "API_LEVEL_ACTUAL";
     private static final boolean MULTI_WINDOW = false;
-
     private static CustomUiDevice INSTANCE = new CustomUiDevice();
     private final Method METHOD_FIND_MATCH;
     private final Method METHOD_FIND_MATCHS;
@@ -49,12 +47,10 @@ public class CustomUiDevice {
      */
     public CustomUiDevice() {
         try {
-
             this.mInstrumentation = (Instrumentation) getField(UiDevice.class, FIELD_M_INSTRUMENTATION, Device.getInstance().getUiDevice());
             this.API_LEVEL_ACTUAL = getField(UiDevice.class, FIELD_API_LEVEL_ACTUAL, Device.getInstance().getUiDevice());
             METHOD_FIND_MATCH = method("android.support.test.uiautomator.ByMatcher", "findMatch", UiDevice.class, BySelector.class, AccessibilityNodeInfo[].class);
             METHOD_FIND_MATCHS = method("android.support.test.uiautomator.ByMatcher", "findMatches", UiDevice.class, BySelector.class, AccessibilityNodeInfo[].class);
-
             ByMatcher = ReflectionUtils.getClass("android.support.test.uiautomator" + ".ByMatcher");
         } catch (Error error) {
             throw error;

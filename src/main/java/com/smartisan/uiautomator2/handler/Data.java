@@ -1,6 +1,6 @@
 package com.smartisan.uiautomator2.handler;
 
-import com.smartisan.uiautomator2.ServiceManage.DataManage;
+import com.smartisan.uiautomator2.manage.DataManage;
 import com.smartisan.uiautomator2.executorserver.AndroidCommand;
 import com.smartisan.uiautomator2.executorserver.AndroidCommandResult;
 import org.json.JSONException;

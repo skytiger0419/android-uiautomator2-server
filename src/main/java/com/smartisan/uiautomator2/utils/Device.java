@@ -1,5 +1,6 @@
 package com.smartisan.uiautomator2.utils;
 
+import android.app.Instrumentation;
 import android.app.UiAutomation;
 import android.content.Context;
 import android.content.Intent;
@@ -32,12 +33,15 @@ import static com.smartisan.uiautomator2.utils.ReflectionUtils.getField;
  */
 public class Device {
 
-    private static Device instance;
-    private Context context;
+    private static volatile Device instance;
     private UiAutomation mUiAutomator;
     private UiDevice mUiDevice;
+    private Context context;
+    private Instrumentation mInstrumentation;
+
 
     private Device(){
+        mInstrumentation = InstrumentationRegistry.getInstrumentation();
         context =  InstrumentationRegistry.getInstrumentation().getTargetContext();
         mUiAutomator = InstrumentationRegistry.getInstrumentation().getUiAutomation();
         mUiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -45,9 +49,17 @@ public class Device {
 
     public static final Device getInstance() {
         if(instance == null){
-            instance = new Device();
+            synchronized (Device.class){
+                if(instance == null){
+                    instance = new Device();
+                }
+            }
         }
         return instance;
+    }
+
+    public Instrumentation getInstrumentation(){
+        return mInstrumentation;
     }
 
     public boolean isOffLine(){

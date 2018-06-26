@@ -1,4 +1,4 @@
-package com.smartisan.uiautomator2.ServiceManage;
+package com.smartisan.uiautomator2.manage;
 
 import android.Manifest;
 import android.content.Context;

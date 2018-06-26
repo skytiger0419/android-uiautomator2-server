@@ -40,7 +40,6 @@ public class AndroidCommandExecutor {
         //元素属性值查找
         map.put("getText", new GetText());
         map.put("setText", new SetText());
-        map.put("setTextNew", new SetTextNew());
         map.put("getAttribute", new GetAttribute());
         map.put("getSize", new GetSize());
         map.put("getLocation", new GetLocation());
@@ -83,6 +82,7 @@ public class AndroidCommandExecutor {
         map.put("clearUiCache", new ClearUiCache());
         map.put("timezone", new TimeZoneHandler());
         map.put("jumpApp", new JumpAppDetail());
+        map.put("sendKeys", new SendKeys());
     }
 
     /**

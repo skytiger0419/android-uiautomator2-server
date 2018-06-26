@@ -1,4 +1,4 @@
-package com.smartisan.uiautomator2.ServiceManage;
+package com.smartisan.uiautomator2.manage;
 
 /**
  * 控制手机连接方案，wifi或手机信号

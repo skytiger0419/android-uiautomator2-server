@@ -1,6 +1,6 @@
 package com.smartisan.uiautomator2.handler;
 
-import com.smartisan.uiautomator2.ServiceManage.LightManage;
+import com.smartisan.uiautomator2.manage.LightManage;
 import com.smartisan.uiautomator2.executorserver.AndroidCommand;
 import com.smartisan.uiautomator2.executorserver.AndroidCommandResult;
 import org.json.JSONException;
@@ -27,17 +27,14 @@ public class Light extends BaseCommandHandler {
                         LightManage.setScreenMode(mode);
                         return getSuccessResult(true);
                     }else{
-                        int light = (int)params.get("light");
-                        LightManage.setScreenBrightness(light);
+                        LightManage.setScreenBrightness((int)params.get("light"));
                         return getSuccessResult(true);
                     }
                 case "get":
                     if(params.containsKey("mode")){
-                        int mode = LightManage.getScreenMode();
-                        return getSuccessResult(mode);
+                        return getSuccessResult(LightManage.getScreenMode());
                     }
-                    int light = LightManage.getScreenBrightness();
-                    return getSuccessResult(light);
+                    return getSuccessResult(LightManage.getScreenBrightness());
             }
         }catch (Exception e){
             return getErrorResult(e.getMessage());

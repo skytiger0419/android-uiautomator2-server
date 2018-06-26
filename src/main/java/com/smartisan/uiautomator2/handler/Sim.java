@@ -1,6 +1,6 @@
 package com.smartisan.uiautomator2.handler;
 
-import com.smartisan.uiautomator2.ServiceManage.MTelePhoneManage;
+import com.smartisan.uiautomator2.manage.MTelePhoneManage;
 import com.smartisan.uiautomator2.executorserver.AndroidCommand;
 import com.smartisan.uiautomator2.executorserver.AndroidCommandResult;
 import org.json.JSONException;

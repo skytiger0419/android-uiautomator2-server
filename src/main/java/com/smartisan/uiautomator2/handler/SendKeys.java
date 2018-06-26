@@ -10,11 +10,9 @@ import org.json.JSONException;
 import java.util.Hashtable;
 
 /**
- * 输入文本
- * Created by Administrator on 2017/3/12.
+ * send key by InteractionController
  */
-
-public class SetTextNew extends BaseCommandHandler {
+public class SendKeys extends BaseCommandHandler {
     @Override
     public AndroidCommandResult execute(AndroidCommand command) throws JSONException {
         try {
@@ -22,6 +20,9 @@ public class SetTextNew extends BaseCommandHandler {
             final Hashtable<String, Object> params = command.params();
             boolean replace = Boolean.parseBoolean(params.get("replace").toString());
             String text = params.get("text").toString();
+            if(replace){
+                new Clear().execute(command);
+            }
             // Send the delete key to clear the existing text, then send the new text
             InteractionController ic = UiAutomatorBridge.getInstance().getInteractionController();
             ic.sendText(text);

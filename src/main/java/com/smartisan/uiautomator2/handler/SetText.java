@@ -57,12 +57,14 @@ public class SetText extends BaseCommandHandler {
                 unicodeKeyboard = Boolean.parseBoolean(params.get("unicodeKeyboard").toString());
             }
             String currText = element.getText();
-            new Clear().execute(command);
-            if (!isTextFieldCleared(element)) {
-                // clear could have failed, or we could have a hint in the field
-                // we'll assume it is the latter
-                Logger.debug("Text not cleared. Assuming remainder is hint text.");
-                currText = "";
+            if(replace){
+                new Clear().execute(command);
+                if (!isTextFieldCleared(element)) {
+                    // clear could have failed, or we could have a hint in the field
+                    // we'll assume it is the latter
+                    Logger.debug("Text not cleared. Assuming remainder is hint text.");
+                    currText = "";
+                }
             }
             if (!replace && currText != null) {
                 text = currText + text;

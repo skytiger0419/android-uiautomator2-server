@@ -1,6 +1,6 @@
 package com.smartisan.uiautomator2.handler;
 
-import com.smartisan.uiautomator2.ServiceManage.WifiManage;
+import com.smartisan.uiautomator2.manage.WifiManage;
 import com.smartisan.uiautomator2.executorserver.AndroidCommand;
 import com.smartisan.uiautomator2.executorserver.AndroidCommandResult;
 import com.smartisan.uiautomator2.model.SwitchStatus;

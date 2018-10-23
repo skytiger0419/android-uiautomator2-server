@@ -1,15 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'uiautomator'
+            keyPassword 'uiautomator'
+            storeFile file('../release.jks')
+            storePassword 'uiautomator'
+        }
+    }
     compileSdkVersion 26
     buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "com.smartisan.uiautomator2"
-        minSdkVersion 19
+        applicationId "com.testguard.uiautomator2"
+        minSdkVersion 18
         targetSdkVersion 26
-        versionCode 8
-        versionName "1.7"
-        archivesBaseName = "smartisan-uiautomator"
+        versionCode 1
+        versionName "1.0"
+        archivesBaseName = "testguard-uiautomator"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -17,10 +25,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     lintOptions {
@@ -29,13 +38,12 @@ android {
     flavorDimensions "default"
     productFlavors {
         server {
-            applicationId 'com.smartisan.uiautomator2'
+            applicationId 'com.testguard.uiautomator2'
         }
-        u2test{
-            applicationId 'com.smartisan.uiautomator2.test'
+        u2test {
+            applicationId 'com.testguard.uiautomator2.test'
         }
     }
-
     packagingOptions {
         exclude 'META-INF/maven/com.google.guava/guava/pom.properties'
         exclude 'META-INF/maven/com.google.guava/guava/pom.xml'
@@ -54,5 +62,4 @@ dependencies {
     androidTestImplementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
-
 }

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smartisan.uiautomator2">
+    package="com.testguard.uiautomator2">
 
     <!-- 申请权限表-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -21,6 +20,7 @@
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.SET_TIME_ZONE" />
@@ -31,11 +31,7 @@
     <!--用户硬件特性-->
     <uses-feature android:name="android.hardware.camera" />
 
-    <application
-        android:label="Smartisan TestService"
-        android:allowBackup="true">
-
-    </application>
+    <application android:label="TestGuard Service" android:allowBackup="true"/>
 
 
 </manifest>

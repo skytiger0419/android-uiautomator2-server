@@ -13,7 +13,7 @@ import static java.lang.System.currentTimeMillis;
 public final class NotificationListener {
     private static List<CharSequence> toastMessages = new ArrayList<CharSequence>();
     private final static NotificationListener INSTANCE = new NotificationListener();
-    private final Listener listener = new Listener();
+    private Thread toastThread = null;
     private boolean stopLooping = false;
     private final int TOAST_CLEAR_TIMEOUT = 3500;
 
@@ -29,26 +29,37 @@ public final class NotificationListener {
      * Listens for Notification Messages
      */
     public void start(){
-        if(!listener.isAlive()){
-            listener.setDaemon(true);
-            listener.start();
+        if(toastThread == null){
+            toastThread = new Thread(new Listener());
+            toastThread.setDaemon(true);
+            toastThread.start();
             stopLooping = false;
         }
-
     }
 
     public void stop(){
         stopLooping = true;
+        try{
+            if(toastThread != null){
+                if(toastThread.isAlive()){
+                    toastThread.stop();
+                }
+            }
+        }catch (Exception e){
+
+        }
+        toastThread = null;
     }
 
     public List<CharSequence> getToastMSGs() {
         return toastMessages;
     }
 
-    private class Listener extends Thread{
+    private class Listener implements Runnable{
 
         private long previousTime = currentTimeMillis();
 
+        @Override
         public void run() {
             while (!stopLooping) {
                 AccessibilityEvent accessibilityEvent = null;
@@ -66,7 +77,6 @@ public final class NotificationListener {
                         // Not performing any event.
                     }
                 };
-
                 try {
                     //wait for AccessibilityEvent filter
                     accessibilityEvent = UiAutomatorBridge.getInstance().getUiAutomation()

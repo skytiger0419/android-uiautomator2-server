@@ -1,58 +1,27 @@
-apply plugin: 'com.android.application'
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-android {
-    compileSdkVersion 24
-    buildToolsVersion '26.0.2'
-    defaultConfig {
-        applicationId "com.smartisan.uiautomator2"
-        minSdkVersion 19
-        targetSdkVersion 24
-        versionCode 7
-        versionName "1.6"
-        archivesBaseName = "smartisan-uiautomator"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        
 
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    lintOptions {
-        abortOnError false
-    }
-    flavorDimensions "default"
-    productFlavors {
-        server {
-            applicationId 'com.smartisan.uiautomator2'
-        }
-        u2test{
-            applicationId 'com.smartisan.uiautomator2.test'
-        }
-    }
-
-    packagingOptions {
-        exclude 'META-INF/maven/com.google.guava/guava/pom.properties'
-        exclude 'META-INF/maven/com.google.guava/guava/pom.xml'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support.test:runner:0.5'
-    compile 'com.jayway.jsonpath:json-path:0.8.1'
-    compile 'com.android.support:support-annotations:23.1.1'
-    compile 'com.android.support:support-v4:24.0.0'
-    compile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
-    compile 'org.nanohttpd:nanohttpd:2.3.0'
-    androidTestCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support:support-annotations:23.1.1'
-    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2.2'
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
 
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

@@ -52,12 +52,12 @@ public class ServerInstrumentation {
             throw new SessionRemovedException("Delete Session has been invoked");
         }
         if (serverThread != null) {
-            Logger.error("Stopping HQ_u2 Server");
+            Logger.error("Stopping Test Guard Server");
             stopServer();
         }
         serverThread = new HttpServer(this.serverPort);
         serverThread.start();
-        Logger.info("HQ_u2 server startup on " + this.serverPort);
+        Logger.info("Test Guard server startup on " + this.serverPort);
     }
 
     public void stopServer() {
@@ -83,7 +83,7 @@ public class ServerInstrumentation {
             serverThread = null;
             return;
         }
-        Logger.info("stop hq_u2 server");
+        Logger.info("stop Test Guard server");
         serverThread.stopLooping();
         serverThread.interrupt();
         try {
@@ -112,7 +112,7 @@ public class ServerInstrumentation {
             // Get a wake lock to stop the cpu going to sleep
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK
-                    | PowerManager.ON_AFTER_RELEASE, "HQ_U2");
+                    | PowerManager.ON_AFTER_RELEASE, "Test Guard");
             try {
                 wakeLock.acquire();
                 Device.getInstance().getUiDevice().wakeUp();

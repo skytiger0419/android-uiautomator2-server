@@ -1,7 +1,7 @@
 package com.testguard.uiautomator2.utils;
 
 public class Logger {
-    public static final String TAG = "SMT_TEST_SERVICE";
+    public static final String TAG = "TEST_GUARD_SERVICE";
 
     private static String getString(Object... args) {
         StringBuilder content = new StringBuilder();

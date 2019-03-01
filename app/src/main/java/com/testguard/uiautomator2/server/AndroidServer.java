@@ -1,5 +1,6 @@
 package com.testguard.uiautomator2.server;
 
+import android.support.test.uiautomator.Configurator;
 import com.testguard.uiautomator2.common.monitor.UiWatchers2;
 import com.testguard.uiautomator2.executorserver.AndroidCommandExecutor;
 import com.testguard.uiautomator2.executorserver.AndroidCommandResult;
@@ -23,6 +24,7 @@ public class AndroidServer extends NanoHTTPD{
     private UiWatchers2 uiWatchers2 = UiWatchers2.getInstance();
     public AndroidServer(int port) {
         super(port);
+        Configurator.getInstance().setWaitForIdleTimeout(200);
         uiWatchers2.start();
     }
 
@@ -30,7 +32,7 @@ public class AndroidServer extends NanoHTTPD{
     public Response serve(IHTTPSession session) {
         if(STOP.equalsIgnoreCase(session.getUri())){
             this.stop();
-            return returnSuccess("HQ uiauto2 exit");
+            return returnSuccess("test guard exit");
         }
         if (!Method.POST.equals(session.getMethod())) {
             return returnFailure("only use post method");

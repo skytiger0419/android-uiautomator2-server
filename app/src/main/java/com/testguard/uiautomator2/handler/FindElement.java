@@ -77,7 +77,6 @@ public class FindElement extends BaseCommandHandler {
      */
     private AndroidCommandResult execute(final AndroidCommand command,
                                          final boolean isRetry) throws JSONException {
-        Configurator.getInstance().setWaitForIdleTimeout(5);
         final Hashtable<String, Object> params = command.params();
         try {
             Logger.info("Find element command");

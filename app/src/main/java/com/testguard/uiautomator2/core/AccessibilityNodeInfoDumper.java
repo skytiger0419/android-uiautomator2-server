@@ -100,6 +100,7 @@ public class AccessibilityNodeInfoDumper {
         serializer.attribute("", "long-clickable", Boolean.toString(node.isLongClickable()));
         serializer.attribute("", "password", Boolean.toString(node.isPassword()));
         serializer.attribute("", "selected", Boolean.toString(node.isSelected()));
+        serializer.attribute("", "visibled", Boolean.toString(node.isVisibleToUser()));
         if (API.API_18) {
             serializer.attribute("", "bounds", AccessibilityNodeInfoHelper.getVisibleBoundsInScreen(node, width, height).toShortString());
         }

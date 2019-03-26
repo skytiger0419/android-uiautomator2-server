@@ -24,7 +24,7 @@ public class AndroidServer extends NanoHTTPD{
     private UiWatchers2 uiWatchers2 = UiWatchers2.getInstance();
     public AndroidServer(int port) {
         super(port);
-        Configurator.getInstance().setWaitForIdleTimeout(200);
+        Configurator.getInstance().setWaitForIdleTimeout(500);
         uiWatchers2.start();
     }
 
